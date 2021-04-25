@@ -1,6 +1,21 @@
 
+.. cg-cross-references:
+
+Cross References
+----------------
+
+Cross references provide semantic links to other URLs on this or another documentation site.
+
+They come from four sources:
+
+* Built-in from docutils or Sphinx
+  * Links between repos/sites uses the Intersphinx extension
+* Created inline
+* Created per repo in the `conf.py` or `snooty.toml` configuration file
+* Created for all repos in the `docs-tools/snooty-parser` repo
+
 Cross Referencing Role Syntax
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table::
    :header-rows: 1
@@ -18,3 +33,388 @@ Cross Referencing Role Syntax
 
    * - ``:rfc:``
      - Refers to Internet Request for Comments.
+
+Cross references can also have custom display text:
+
+`:doc: Security </secure>` shows `Security` but links to `/secure`
+
+Prefix with `~` to change the title to the last component of the target:
+
+`:binary: ~bin.mongos` shows `mongos` but links to `bin.mongos`
+
+Xref: Built-in docutils & Sphinx
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Common docutils and Sphinx cross references:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 50 25
+
+   * - Notation
+     - Code
+     - Rendered
+   
+   * - ``:doc:`` 
+     - ``Read the :doc:`Style Guide </meta/style-guide>`.``
+     - Read the :doc: `Style Guide.`
+
+   * - ``:rfc:``
+     - ``See RFC :rfc:`2822`.``
+     - See RFC :rfc:`2822`
+
+   * - ``:abbr:``
+     - ``:abbr:`RFC (Request for Comment)`.``
+     - :abbr:`RFC (Request for Comment)`
+
+   * - ``:term:``
+     - ``:term:`blockstore`.``
+     - :term:`blockstore`
+
+   * - ``:download:``
+     - ``Export the :download:`metadata.gz` file.``
+     - Export the :download:`metadata.gz` file.
+
+Xref: Inline Targets and Links
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create and reference targets in any file.
+
+To create cross references targets within a page, add this above one heading:
+
+``.. _reference:``
+
+To create a link to that specific cross reference:
+
+:code:``:ref:`reference``
+:code:``:ref:`display-text <reference>``
+
+Try to keep cross references unique.
+
+Cross references work across all linked repositories.
+
+Use `kebab-case`, not:
+
+`camelCase`
+`snake_case`
+`TRAIN-CASE`
+`SCREAMING_SNAKE_CASE`
+
+Kebab-case can result in bad line breaks that cause errors. 
+Check refs and links for hyphenation breaks.
+
+Xref: Defined in `Snooty <snooty-parser/snooty/rstspec.toml>`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Target as an xref `role <https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html>`_.
+
+`rstspec.toml` is a file shared across repos. If you need to add to or update it, you can follow one of the following processes:
+* File a `DOP` ticket & post a request in `#snooty-platform` with the ticket link
+* Create a PR against `rstspec.toml` & request a review in `#snooty-platform` with the PR link
+
+.. list-table::
+   :header-rows: 0
+   :widths: 25 75
+
+   * - `alert`
+     - System Alert
+   * - `atlasrole`
+     - Atlas User Role
+   * - `apierror`
+     - Error Code for Public API
+
+   * - `authrole`
+     - C/OM User Role
+   * - `binary`
+     - Program
+   * - `bsontype`
+     - BSON type
+     
+   * - `collflag`
+     - Collection Flag
+   * - `commandoption`
+     - Mongo Tool Command-Specific Option
+   * - `configexpansion`
+     - Expansion Directive for mongod/s Configuration File
+
+   * - `data`
+     - MongoDB Reporting Output
+   * - `datalakeconf`
+     - Data Lake Configuration Object
+   * - `dbcommand`
+     - Database Command
+
+   * - `error`
+     - Error Code
+   * - `event`
+     - System Event
+   * - `expression`
+     - Agg Transformation Expression
+ 
+   * - `group`
+     - Agg Group Expression
+   * - `method`
+     - Shell Method
+   
+   * - `operator`
+     - Operator
+   * - `parameter`
+     - `setParameter` Option
+   * - `pipeline`
+     - Aggregation Pipeline
+
+   * - `projection`
+     - Projection Operator
+   * - `query`
+     - Query
+   * - `readconcern`
+     - `readConcern` Values
+
+   * - `readmode`
+     - Read Preference Mode
+   * - `replstate`
+     - Replica Set State
+   * - `serverstatus`
+     - `serverstatus` Data
+
+   * - `setting`
+     - Setting
+   * - `toolcommand`
+     - Mongo Tool Command
+   * - `update`
+     - Update Operator
+
+   * - `urioption`
+     - URI Option
+   * - `variable`
+     - Agg System Variable Available
+   * - `writeconcern`
+     - `writeConcern` Values
+
+Xref: Defined in docs-tools
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   
+.. warning:: Legacy only
+
+Set as a `directive <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html>`_, Target as an xref `role <https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html>`_.
+
+.. list-table::
+   :header-rows: 0
+   :widths: 25 75
+
+   * - `alert`
+     - System Alert
+   
+   * - `atlasrole`
+     - Atlas User Role
+   
+   * - `apierror`
+     - Error Code for Public API
+   
+   * - `authrole`
+     - C/OM User Role
+   
+   * - `binary`
+     - Program
+   
+   * - `bsontype`
+     - BSON type
+   
+   * - `collflag`
+     - Collection Flag
+   
+   * - `commandoption`
+     - Mongo Tool Command-Specific Option
+   
+   * - `configexpansion`
+     - Expansion Directive for mongod/s Configuration File
+   
+   * - `data`
+     - MongoDB Reporting Output
+   
+   * - `datalakeconf`
+     - Data Lake Configuration Object
+   
+   * - `dbcommand`
+     - Database Command
+   
+   * - `error`
+     - Error Code
+   
+   * - `event`
+     - System Event
+   
+   * - `expression`
+     - Agg Transformation Expression
+   
+   * - `fncontext`
+     - Stitch Function Context
+   
+   * - `group`
+     - Agg Group Expression
+   
+   * - `method`
+     - Shell Method
+   
+   * - `operator`
+     - Operator
+   
+   * - `parameter`
+     - `setParameter` Option
+   
+   * - `pipeline`
+     - Aggregation Pipeline
+   
+   * - `projection`
+     - Projection Operator
+   
+   * - `query`
+     - Query
+   
+   * - `readconcern`
+     - `readConcern` Values
+   
+   * - `readmode`
+     - Read Preference Mode
+   
+   * - `replstate`
+     - Replica Set State
+   
+   * - `serverstatus`
+     - `serverstatus` Data
+   
+   * - `setting`
+     - Setting
+
+   * - `toolcommand`
+     - Mongo Tool Command
+
+   * - `update`
+     - Update Operator
+
+   * - `urioption`
+     - URI Option
+
+   * - `variable`
+     - Agg System Variable Available
+
+   * - `writeconcern`
+     - `writeConcern` Values
+
+
+Xref: External Sites Defined in snooty-parser
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Found in `snooty parser <https://github.com/mongodb/snooty-parser/blob/master/snooty/rstspec.toml>`_. 
+
+Defined as a `role` with type `link`
+
+`rstspec.toml` is a file shared across repos. If you need to add to or update it, you can:
+
+* File a DOP ticket & post a request in `#snooty-platform <https://mongodb.slack.com/archives/C018UTGP23T>`_ with the ticket link.
+* Create a PR against `rstspec.toml` & request a review in `#snooty-platform <https://mongodb.slack.com/archives/C018UTGP23T>`_ with the PR link.
+
+This file is used to create links to most referenced internal and external sites, including:
+
+* Prior versions
+* Other MongoDB doc sets
+* Common reference site for the documentation like AWS, Azure, etc.
+
+
+This entry in `rstspec.toml`:
+
+.. code-block::
+
+[role.atlas]
+help = """Link to the synchronous Atlas documentation."""
+type = {link = "https://docs.atlas.mongodb.com%s"}
+
+enables links to Atlas docs in this format:
+
+:atlas:`start </getting-started>`
+
+This Expands to
+Display **start**
+
+and creates a link to
+
+`https://docs.atlas.mongodb.com/getting-started`
+
+Xref: External Sites Defined in `conf.py`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning:: Legacy only
+
+Found in `extlinks` dictionary in `conf.py`
+
+To add a new xref, add a dictionary entry to `extlinks`:
+
+.. code-block::
+
+'<xref-label>': ('<base-url>%s', ''),
+
+This is used to create links to most referenced internal and external sites including:
+
+* Prior versions
+* Other MongoDB doc sets
+* Common reference site for the documentation like AWS, Azure, etc.
+
+Add this entry in `extlinks`:
+
+'atlas': ('https://docs.atlas.mongodb.com%s', ''),
+
+To create links to Atlas docs in this format:
+
+:atlas:`start </getting-started>`
+
+Expands to
+Display **start**
+
+and Links to
+
+`https://docs.atlas.mongodb.com/getting-started`
+
+Hyperlinks
+----------
+
+How to link to pages and sites outside of the docs
+
+Inline Hyperlinks
+~~~~~~~~~~~~~~~~~
+
+Use explicit markup.
+`link text <http://example.com>`__
+
+* Recommend two underscores. Sphinx and docutils treat each link as unique when converting to HTML.
+* Use one underscore on two hyperlinks to same page and generate an error.
+
+Referenced Hyperlinks
+~~~~~~~~~~~~~~~~~~~~~
+
+#. Write the target first in explicit markup format:
+.. _a link: http://example.com
+
+#. Reference the link:
+This paragraph contains `a link`__
+
+* Use this method for links that appear in multiple places.
+
+Internal Hyperlinks
+~~~~~~~~~~~~~~~~~~~
+
+Use :ref:`cg-cross-references`
+
+Footnotes
+---------
+
+Use [#name]_ within text to mark the footnote location.
+
+`Lorem ipsum [#f1]_ dolor sit amet ... [#f2]_ `
+
+Add the footnote body at the bottom of the document after a “Footnotes” rubric heading:
+
+.. code-block::
+
+rubric:: Footnotes
+[#f1] Text of the first footnote.
+[#f2] Text of the second footnote.
